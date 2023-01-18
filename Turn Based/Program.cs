@@ -55,4 +55,6 @@ if (enemyIndex == 2)
 
 Console.WriteLine("What do you wish to do?");
 Console.WriteLine("1. Attack\n2. Block\n3. Item");
-int roundChoice = Console.ReadLine(Convert.ToInt32);
+string roundChoiceText = Console.ReadLine();
+int roundChoice = Convert.ToInt32(roundChoiceText);
+
