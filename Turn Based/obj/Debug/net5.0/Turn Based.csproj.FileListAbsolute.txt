@@ -1,0 +1,16 @@
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\bin\Debug\net5.0\Turn Based.exe
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\bin\Debug\net5.0\Turn Based.deps.json
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\bin\Debug\net5.0\Turn Based.runtimeconfig.json
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\bin\Debug\net5.0\Turn Based.runtimeconfig.dev.json
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\bin\Debug\net5.0\Turn Based.dll
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\bin\Debug\net5.0\Turn Based.pdb
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\Turn Based.csproj.AssemblyReference.cache
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\Turn Based.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\Turn Based.AssemblyInfoInputs.cache
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\Turn Based.AssemblyInfo.cs
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\Turn Based.csproj.CoreCompileInputs.cache
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\Turn Based.dll
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\refint\Turn Based.dll
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\Turn Based.pdb
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\Turn Based.genruntimeconfig.cache
+C:\Users\osull\Desktop\Work\Turn-Based\Turn Based\obj\Debug\net5.0\ref\Turn Based.dll
