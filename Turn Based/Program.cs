@@ -20,5 +20,3 @@ switch (classSelect)
         break;
 }
 
-Console.WriteLine("gIT TEST");
-Console.WriteLine("Git tEst """"")
