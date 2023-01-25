@@ -1,53 +1,79 @@
 ﻿using System;
-int[] classHealth = new int[3] { 200, 140, 100 }; // Each classes health
+using System.IO;
 
-SelectingClass();
-
-
-
-
-
-
-
-
-
-
-int SelectingClass()
+namespace Turn_Based
 {
-    Console.WriteLine("Select a class:\n1. Tank\n2. Fighter\n3. Mage");
-    string classChoiceText = Console.ReadLine();
-    int classChoice = Convert.ToInt32(classChoiceText);
-
-    switch (classChoice)
+    internal class Program
     {
-        case 1:
-            Console.WriteLine("You chose Tank");
-            return classChoice;
-            break;
+        static void Main(string[] args)
+        {
+            Character playerCharacter = GetCharacter();
+        }
 
-        case 2:
-            Console.WriteLine("You chose Fighter");
-            return classChoice;
-            break;
 
-        case 3:
-            Console.WriteLine("You chose Mage");
-            return classChoice;
-            break;
 
-        default:
-            Console.WriteLine("That wasn't an option");
-            return classChoice;
-            break;
+
+
+
+        public static Character GetCharacter()
+        {
+            Console.WriteLine("Enter your name");
+            string nameText = Console.ReadLine();
+
+            Console.WriteLine("Select a class:\nTank\nFighter\nMage");
+            int classChoice = Convert.ToInt32(Console.ReadLine());
+
+            switch (classChoice)
+            {
+                case 1:
+                    return new Tank();
+                    
+                case 2:
+                    return new Fighter();
+                  
+                default:
+                    return new Mage();
+            }
+        }
     }
-} // Setting up class selection
 
-class ClassChoice
-{
-    public string classType;
-    public int classHealth;
-    public string classWeapons;
-} // Things that depend on the class you choose
 
-enum Classes { Tank, Fighter, Mage } // The different classes
-enum ClassWeapons { Greatsword, Shield, TwoShortSwords, FireStaff, IceStaff} // Each classes weapons
+
+
+
+
+
+
+
+
+
+
+    public class Character
+    {
+        public string name;
+        public int health;
+        public int damage;
+        public int block;
+        
+        public Character(string name, int health, int damage, int block)
+        {
+            this.name = name;
+            this.health = health;
+            this.damage = damage;
+            this.block = block;
+        }
+
+        public void RecieveDamageFromOpponent(int incomingDamage)
+        {
+            this.health -= incomingDamage;
+        }
+
+        public void DealDamageToOpponent(Character opoonent)
+        {
+            opoonent.RecieveDamageFromOpponent(this.damage);
+        }
+    }
+
+
+
+}
