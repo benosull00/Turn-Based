@@ -10,10 +10,11 @@ namespace Turn_Based
     {
         public Fighter()
         {
-            this.name = Console.ReadLine();
+            this.name = ""; 
             this.health = 140;
             this.damage = 30;
             this.block = 8;
+            this.weapons = "Dual Shortswords";
         }
     }
 }

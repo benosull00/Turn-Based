@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-/*
+
 namespace Turn_Based
 {
     public class Character
@@ -13,6 +13,6 @@ namespace Turn_Based
         public int health = 1;
         public int damage = 1;
         public int block = 1;
+        public string weapons;
     }
 }
-*/

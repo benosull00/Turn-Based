@@ -10,10 +10,11 @@ namespace Turn_Based
     {
         public Mage()
         {
-            this.name = Console.ReadLine();
+            this.name = "";
             this.health = 100;
             this.damage = 40;
             this.block = 6;
+            this.weapons = "Staff of Fire\nStaff of Ice";
         }
     }
 }

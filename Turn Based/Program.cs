@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace Turn_Based
 {
@@ -7,7 +6,11 @@ namespace Turn_Based
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter your name");
+            string nameText = Console.ReadLine();
             Character playerCharacter = GetCharacter();
+            playerCharacter.name = nameText;
+            Console.WriteLine($"\nHealth: {playerCharacter.health}\nDamage: {playerCharacter.damage}\nBlock: {playerCharacter.block}\n\nWeapons:\n{playerCharacter.weapons}");
         }
 
 
@@ -17,10 +20,7 @@ namespace Turn_Based
 
         public static Character GetCharacter()
         {
-            Console.WriteLine("Enter your name");
-            string nameText = Console.ReadLine();
-
-            Console.WriteLine("Select a class:\nTank\nFighter\nMage");
+            Console.WriteLine("Select a class:\n1. Tank\n2. Fighter\n3. Mage");
             int classChoice = Convert.ToInt32(Console.ReadLine());
 
             switch (classChoice)
@@ -37,43 +37,5 @@ namespace Turn_Based
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-    public class Character
-    {
-        public string name;
-        public int health;
-        public int damage;
-        public int block;
-        
-        public Character(string name, int health, int damage, int block)
-        {
-            this.name = name;
-            this.health = health;
-            this.damage = damage;
-            this.block = block;
-        }
-
-        public void RecieveDamageFromOpponent(int incomingDamage)
-        {
-            this.health -= incomingDamage;
-        }
-
-        public void DealDamageToOpponent(Character opoonent)
-        {
-            opoonent.RecieveDamageFromOpponent(this.damage);
-        }
-    }
-
-
-
 }
+  

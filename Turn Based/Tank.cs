@@ -10,10 +10,11 @@ namespace Turn_Based
     {
         public Tank()
         {
-            this.name = Console.ReadLine();
+            this.name = "";
             this.health = 200;
             this.damage = 20;
             this.block = 10;
+            this.weapons = "Longsword\nShield";
         }
 
     }
