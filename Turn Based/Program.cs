@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace Turn_Based
 {
@@ -7,7 +8,11 @@ namespace Turn_Based
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter your name");
+            string nameText = Console.ReadLine();
             Character playerCharacter = GetCharacter();
+            playerCharacter.name = nameText;
+            Console.WriteLine($"Name: {playerCharacter.name}\nHealth: {playerCharacter.health}\nDamage: {playerCharacter.damage}\nBlock: {playerCharacter.block}");
         }
 
 
@@ -17,9 +22,6 @@ namespace Turn_Based
 
         public static Character GetCharacter()
         {
-            Console.WriteLine("Enter your name");
-            string nameText = Console.ReadLine();
-
             Console.WriteLine("Select a class:\nTank\nFighter\nMage");
             int classChoice = Convert.ToInt32(Console.ReadLine());
 
@@ -48,7 +50,7 @@ namespace Turn_Based
 
 
 
-    public class Character
+   /* public class Character
     {
         public string name;
         public int health;
@@ -75,5 +77,6 @@ namespace Turn_Based
     }
 
 
-
+    */
 }
+  

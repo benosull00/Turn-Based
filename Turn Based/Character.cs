@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-/*
+
 namespace Turn_Based
 {
     public class Character
@@ -15,4 +15,3 @@ namespace Turn_Based
         public int block = 1;
     }
 }
-*/
