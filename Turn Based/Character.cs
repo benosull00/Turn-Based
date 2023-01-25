@@ -13,5 +13,6 @@ namespace Turn_Based
         public int health = 1;
         public int damage = 1;
         public int block = 1;
+        public string weapons;
     }
 }

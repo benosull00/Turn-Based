@@ -14,6 +14,7 @@ namespace Turn_Based
             this.health = 100;
             this.damage = 40;
             this.block = 6;
+            this.weapons = "Staff of Fire\nStaff of Ice";
         }
     }
 }

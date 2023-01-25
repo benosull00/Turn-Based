@@ -14,6 +14,7 @@ namespace Turn_Based
             this.health = 200;
             this.damage = 20;
             this.block = 10;
+            this.weapons = "Longsword\nShield";
         }
 
     }

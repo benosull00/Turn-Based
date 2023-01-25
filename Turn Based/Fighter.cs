@@ -14,6 +14,7 @@ namespace Turn_Based
             this.health = 140;
             this.damage = 30;
             this.block = 8;
+            this.weapons = "Dual Shortswords";
         }
     }
 }
