@@ -11,10 +11,16 @@ namespace Turn_Based
         public Wolf()
         {
             this.name = "Wolf";
-            this.health = 90;
+            this.health = 50;
             this.damage = 12;
-            this.block = 4;
+            this.block = 2;
             this.weapons = "Claws";
         }
+
+        public override void AttackOpponent(Character opponent)
+        {
+            opponent.RecieveDamageFromEnemy(this.damage);
+        }
+
     }
 }

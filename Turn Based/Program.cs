@@ -17,9 +17,7 @@ namespace Turn_Based
             playerCharacter.name = nameText;
             Console.WriteLine($"\nHealth: {playerCharacter.health}\nDamage: {playerCharacter.damage}\nBlock: {playerCharacter.block}\n\nWeapons:\n{playerCharacter.weapons}");
 
-            Console.WriteLine("\nPress any key to continue");
-            Console.ReadKey(true);
-            Console.Clear();
+            AnyKeyContinue();
 
 
             while (gameIsRunning)
@@ -28,15 +26,48 @@ namespace Turn_Based
                 Console.WriteLine("Round: " + (roundNo));
 
                 Enemy enemyCharacter = GetEnemy();
-                Console.WriteLine($"{enemyCharacter.name}\n {enemyCharacter.health}");
+                Console.WriteLine($"Enemy: {enemyCharacter.name}\nHealth: {enemyCharacter.health}\nWeapons: {enemyCharacter.weapons}");
+
+
+
+                Console.WriteLine("\nWhat would you like to do?\n1. Attack\n2. Wait");
+                int moveChoice = Convert.ToInt32(Console.ReadLine());
+
+                switch (moveChoice)
+                {
+                    case 1:
+                        playerCharacter.AttackOpponent(enemyCharacter);
+                        Console.WriteLine($"\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage");
+                        break;
+
+                    default:
+                        Console.WriteLine("You've decided to wait");
+                        break;
+                }
+
+                AnyKeyContinue();
+
+
+
+
+
 
                 break;
-
             }
 
 
+            void AnyKeyContinue()
+            {
+                Console.WriteLine("\nPres any key to continue");
+                Console.ReadKey(true);
+                Console.Clear();
+            }
 
         }
+
+
+
+
 
 
 

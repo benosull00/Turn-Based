@@ -12,9 +12,14 @@ namespace Turn_Based
         {
             this.name = ""; 
             this.health = 140;
-            this.damage = 30;
+            this.damage = 50;
             this.block = 8;
             this.weapons = "Dual Shortswords";
+        }
+
+        public override void AttackOpponent(Enemy opponent)
+        {
+            opponent.RecieveDamageFromPlayer(this.damage);
         }
     }
 }
