@@ -11,9 +11,9 @@ namespace Turn_Based
         public Fighter()
         {
             this.name = ""; 
-            this.health = 140;
-            this.damage = 50;
-            this.block = 8;
+            this.health = 100;
+            this.damage = 65;
+            this.block = 5;
             this.weapons = "Dual Shortswords";
         }
 

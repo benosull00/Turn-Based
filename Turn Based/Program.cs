@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Turn_Based
 {
@@ -7,7 +8,7 @@ namespace Turn_Based
         static void Main(string[] args)
         {
 
-            int roundNo = 0;
+            int roundNo = 1;
             bool gameIsRunning = true;
 
 
@@ -22,38 +23,70 @@ namespace Turn_Based
 
             while (gameIsRunning)
             {
-                roundNo++;
-                Console.WriteLine("Round: " + (roundNo));
-
                 Enemy enemyCharacter = GetEnemy();
-                Console.WriteLine($"Enemy: {enemyCharacter.name}\nHealth: {enemyCharacter.health}\nWeapons: {enemyCharacter.weapons}");
 
-
-
-                Console.WriteLine("\nWhat would you like to do?\n1. Attack\n2. Wait");
-                int moveChoice = Convert.ToInt32(Console.ReadLine());
-
-                switch (moveChoice)
+                while (gameIsRunning)
                 {
-                    case 1:
-                        playerCharacter.AttackOpponent(enemyCharacter);
-                        Console.WriteLine($"\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage");
-                        break;
+                    if (playerCharacter.health <= 0)
+                    {
+                        gameIsRunning = false;
+                    }
 
-                    default:
-                        Console.WriteLine("You've decided to wait");
-                        break;
+                    else
+                    {
+                        
+                        Console.WriteLine("Round: " + (roundNo) + "\nCurrent health :" + (playerCharacter.health) + "\n\n");
+
+
+                        Console.WriteLine($"Enemy: {enemyCharacter.name}\nHealth: {enemyCharacter.health}\nWeapons: {enemyCharacter.weapons}");
+
+
+
+                        Console.WriteLine("\nWhat would you like to do?\n1. Attack\n2. Wait");
+                        int moveChoice = Convert.ToInt32(Console.ReadLine());
+
+                        switch (moveChoice)
+                        {
+                            case 1:
+                                playerCharacter.AttackOpponent(enemyCharacter);
+                                Console.WriteLine($"\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage");
+                                break;
+
+                            default:
+                                Console.WriteLine("\nYou've decided to wait");
+                                break;
+                        }
+
+                        if (enemyCharacter.health <= 0)
+                        {
+                            Console.WriteLine("\nVictory!\nEnemy Defeated\n\nNext Opponent");
+                            roundNo++;
+                            AnyKeyContinue();
+                            break;
+                        }
+
+                        else
+                        {
+
+                            AnyKeyContinue();
+
+                            Console.WriteLine($"{enemyCharacter.name}'s Turn\n\n{enemyCharacter.name} is thinking...");
+                            Thread.Sleep(1250);
+
+                            enemyCharacter.AttackOpponent(playerCharacter);
+                            Console.WriteLine($"{enemyCharacter.name} decides to attack");
+                            Console.WriteLine($"You take {enemyCharacter.damage / playerCharacter.block} damage");
+
+                            
+                            AnyKeyContinue();
+                        }
+                    }
                 }
 
-                AnyKeyContinue();
-
-
-
-
-
-
-                break;
             }
+            Console.WriteLine("Game over");
+            Console.WriteLine($"You lasted {roundNo} rounds\nThank you for playing");
+            Console.ReadKey(true);
 
 
             void AnyKeyContinue()
@@ -67,7 +100,7 @@ namespace Turn_Based
 
 
 
-
+        
 
 
 
@@ -96,9 +129,9 @@ namespace Turn_Based
         public static  Enemy GetEnemy()
         {
             Random rndEnemy = new Random();
-            int enemySelect = rndEnemy.Next(1, 3);
+            int enemySelect = rndEnemy.Next(1, 4);
 
-            if (enemySelect == 2)
+            if (enemySelect == 2 || enemySelect == 3)
             {
                 return new Goblin();
             }
