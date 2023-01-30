@@ -12,9 +12,14 @@ namespace Turn_Based
         {
             this.name = "";
             this.health = 100;
-            this.damage = 40;
+            this.damage = 60;
             this.block = 6;
             this.weapons = "Staff of Fire\nStaff of Ice";
+        }
+
+        public override void AttackOpponent(Enemy opponent)
+        {
+            opponent.RecieveDamageFromPlayer(this.damage);
         }
     }
 }
