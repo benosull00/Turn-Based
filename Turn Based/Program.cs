@@ -49,7 +49,7 @@ namespace Turn_Based
                         {
                             case 1:
                                 playerCharacter.AttackOpponent(enemyCharacter);
-                                Console.WriteLine($"\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage");
+                                Console.WriteLine($"\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage!");
                                 break;
 
                             default:
@@ -75,7 +75,7 @@ namespace Turn_Based
 
                             enemyCharacter.AttackOpponent(playerCharacter);
                             Console.WriteLine($"{enemyCharacter.name} decides to attack");
-                            Console.WriteLine($"You take {enemyCharacter.damage / playerCharacter.block} damage");
+                            Console.WriteLine($"\nYou take {enemyCharacter.damage / playerCharacter.block} damage");
 
                             
                             AnyKeyContinue();
@@ -89,18 +89,18 @@ namespace Turn_Based
             Console.ReadKey(true);
 
 
-            void AnyKeyContinue()
-            {
-                Console.WriteLine("\nPres any key to continue");
-                Console.ReadKey(true);
-                Console.Clear();
-            }
+            
 
         }
 
+        public static void AnyKeyContinue()
+        {
+            Console.WriteLine("\nPres any key to continue");
+            Console.ReadKey(true);
+            Console.Clear();
+        }
 
 
-        
 
 
 
