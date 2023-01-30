@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Turn_Based
 {
-    internal class Goblin
+    internal class Goblin : Enemy
     {
+        public Goblin()
+        {
+            this.name = "Goblin";
+            this.health = 120;
+            this.damage = 20;
+            this.block = 8;
+            this.weapons = "Shortsword";
+        }
     }
 }
