@@ -12,8 +12,8 @@ namespace Turn_Based
         {
             this.name = "Goblin";
             this.health = 70;
-            this.damage = 20;
-            this.block = 3;
+            this.damage = 45;
+            this.block = 4;
             this.weapons = "Shortsword";
         }
 

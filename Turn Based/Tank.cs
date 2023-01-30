@@ -11,9 +11,9 @@ namespace Turn_Based
         public Tank()
         {
             this.name = "";
-            this.health = 200;
-            this.damage = 40;
-            this.block = 10;
+            this.health = 100;
+            this.damage = 55;
+            this.block = 7;
             this.weapons = "Longsword\nShield";
         }
 
