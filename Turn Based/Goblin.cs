@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Turn_Based
 {
-    internal class Goblin : Character 
+    internal class Goblin : Enemy
     {
         public Goblin()
         {
