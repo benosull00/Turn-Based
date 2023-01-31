@@ -11,6 +11,9 @@ namespace Turn_Based
             int roundNo = 1;
             bool gameIsRunning = true;
 
+            Console.WriteLine("Welcome\nThis is a turn based combat game\nEvery round you will be presented with a new enemy and can use various abilities to defeat them\nAfter each round you will recover some health and every x rounds you will recover x items (NOT ADDED YET)\n\nEvery x rounds there will be a boss (ALSO NOT ADDED YET)\n\ngl&hf");
+            AnyKeyContinue();
+
 
             Console.WriteLine("Enter your name");
             string nameText = Console.ReadLine();
@@ -125,7 +128,7 @@ namespace Turn_Based
 
 
                             default:
-                                Console.WriteLine("\nYou've decided to wait");
+                                Console.WriteLine("\nYou've decided to wait...");
                                 break;
                         }
 
@@ -176,7 +179,7 @@ namespace Turn_Based
 
         public static void AnyKeyContinue()
         {
-            Console.WriteLine("\nPres any key to continue");
+            Console.WriteLine("\nPress any key to continue");
             Console.ReadKey(true);
             Console.Clear();
         }
