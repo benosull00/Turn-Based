@@ -10,7 +10,7 @@ namespace Turn_Based
     public abstract class Enemy
     {
         public string name;
-        public int health = 1;
+        public float health = 1; 
         public int damage = 1;
         public int block = 1;
         public string weapons;

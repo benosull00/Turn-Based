@@ -14,6 +14,9 @@ namespace Turn_Based
         public int damage = 1;
         public int block = 1;
         public string weapons;
+        public int itemCount;
+        public string itemNames;
+        public string specialMove;
 
         public void RecieveDamageFromEnemy(int incomingDamage)
         {
@@ -21,6 +24,8 @@ namespace Turn_Based
         }
 
         public abstract void AttackOpponent(Enemy opponent);
+
+
     }
 
 
