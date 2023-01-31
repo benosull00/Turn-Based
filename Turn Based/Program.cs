@@ -109,14 +109,14 @@ namespace Turn_Based
                                         case 1:
                                             Console.WriteLine("\nAttacking...");
                                             Thread.Sleep(1250);
-                                            Console.WriteLine($"You set {enemyCharacter.name} on fire!\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's nice and toasty");
+                                            Console.WriteLine($"\nYou set {enemyCharacter.name} on fire!\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's nice and toasty");
                                             playerCharacter.AttackOpponent(enemyCharacter);
                                             break;
 
                                         default:
                                             Console.WriteLine("\nAttacking...");
                                             Thread.Sleep(1250);
-                                            Console.WriteLine($"You froze {enemyCharacter.name}\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's really cold");
+                                            Console.WriteLine($"\nYou froze {enemyCharacter.name}\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's really cold");
                                             playerCharacter.AttackOpponent(enemyCharacter);
                                             break;
                                     }
@@ -221,16 +221,21 @@ namespace Turn_Based
         public static  Enemy GetEnemy()
         {
             Random rndEnemy = new Random();
-            int enemySelect = rndEnemy.Next(1, 4);
+            int enemySelect = rndEnemy.Next(1, 10);
 
-            if (enemySelect == 2 || enemySelect == 3)
+            if (enemySelect >= 1 && enemySelect <= 5)
             {
                 return new Goblin();
             }
 
-            else 
+            else if (enemySelect >= 6 && enemySelect < 9)
             {
                 return new Wolf();            
+            }
+
+            else
+            {
+                return new BanKiMoon();
             }
         }
     }

@@ -12,7 +12,7 @@ namespace Turn_Based
         {
             this.name = ""; 
             this.health = 100;
-            this.damage = 65;
+            this.damage = 100;
             this.block = 5;
             this.weapons = "Dual Shortswords";
             this.itemCount = 2;
