@@ -109,14 +109,14 @@ namespace Turn_Based
                                         case 1:
                                             Console.WriteLine("\nAttacking...");
                                             Thread.Sleep(1250);
-                                            Console.WriteLine($"You set {enemyCharacter.name} on fire!\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's nice and toasty");
+                                            Console.WriteLine($"\nYou set {enemyCharacter.name} on fire!\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's nice and toasty");
                                             playerCharacter.AttackOpponent(enemyCharacter);
                                             break;
 
                                         default:
                                             Console.WriteLine("\nAttacking...");
                                             Thread.Sleep(1250);
-                                            Console.WriteLine($"You froze {enemyCharacter.name}\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's really cold");
+                                            Console.WriteLine($"\nYou froze {enemyCharacter.name}\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's really cold");
                                             playerCharacter.AttackOpponent(enemyCharacter);
                                             break;
                                     }
