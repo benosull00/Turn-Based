@@ -10,9 +10,11 @@ namespace Turn_Based
     {
         public Mage()
         {
+            Random randomDmg = new Random();
+
             this.name = "";
             this.health = 100;
-            this.damage = 85;
+            this.damage = randomDmg.Next(50, 100);
             this.block = 4;
             this.weapons = "Staff of Fire\nStaff of Ice";
         }

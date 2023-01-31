@@ -11,6 +11,9 @@ namespace Turn_Based
             int roundNo = 1;
             bool gameIsRunning = true;
 
+            Random rndHealthRegen = new Random();
+            int healthRegen = rndHealthRegen.Next(0, 6);
+
 
             Console.WriteLine("Enter your name");
             string nameText = Console.ReadLine();
@@ -25,12 +28,18 @@ namespace Turn_Based
             {
                 Enemy enemyCharacter = GetEnemy();
 
+                if (playerCharacter.health < 100 && playerCharacter.health > 0)
+                {
+                    playerCharacter.health += healthRegen;
+                }
+
                 while (gameIsRunning)
                 {
                     if (playerCharacter.health <= 0)
                     {
                         gameIsRunning = false;
                     }
+
 
                     else
                     {
@@ -49,6 +58,8 @@ namespace Turn_Based
                         {
                             case 1:
                                 playerCharacter.AttackOpponent(enemyCharacter);
+                                Console.WriteLine("\nAttacking...");
+                                Thread.Sleep(1250);
                                 Console.WriteLine($"\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage!");
                                 break;
 
@@ -59,7 +70,7 @@ namespace Turn_Based
 
                         if (enemyCharacter.health <= 0)
                         {
-                            Console.WriteLine("\nVictory!\nEnemy Defeated\n\nNext Opponent");
+                            Console.WriteLine($"\nVictory!\nEnemy Defeated\n\nYou regained {healthRegen} health\n\nNext Opponent");
                             roundNo++;
                             AnyKeyContinue();
                             break;
