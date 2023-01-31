@@ -15,6 +15,8 @@ namespace Turn_Based
             this.damage = 65;
             this.block = 5;
             this.weapons = "Dual Shortswords";
+            this.itemCount = 2;
+            this.itemNames = "Health potion";
         }
 
         public override void AttackOpponent(Enemy opponent)

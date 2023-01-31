@@ -15,6 +15,9 @@ namespace Turn_Based
             this.damage = 55;
             this.block = 7;
             this.weapons = "Longsword\nShield";
+            this.itemCount = 2;
+            this.itemNames = "Health potion";
+            this.specialMove = "Shield Bash";
         }
 
         public override void AttackOpponent(Enemy opponent)
