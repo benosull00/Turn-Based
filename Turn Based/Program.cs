@@ -11,9 +11,6 @@ namespace Turn_Based
             int roundNo = 1;
             bool gameIsRunning = true;
 
-            Random rndHealthRegen = new Random();
-            int healthRegen = rndHealthRegen.Next(0, 6);
-
 
             Console.WriteLine("Enter your name");
             string nameText = Console.ReadLine();
@@ -30,7 +27,7 @@ namespace Turn_Based
 
                 if (playerCharacter.health < 100 && playerCharacter.health > 0)
                 {
-                    playerCharacter.health += healthRegen;
+                    playerCharacter.health += RoundTransfer();
                 }
 
                 while (gameIsRunning)
@@ -70,7 +67,7 @@ namespace Turn_Based
 
                         if (enemyCharacter.health <= 0)
                         {
-                            Console.WriteLine($"\nVictory!\nEnemy Defeated\n\nYou regained {healthRegen} health\n\nNext Opponent");
+                            Console.WriteLine($"\nVictory!\nEnemy Defeated");
                             roundNo++;
                             AnyKeyContinue();
                             break;
@@ -109,6 +106,17 @@ namespace Turn_Based
             Console.WriteLine("\nPres any key to continue");
             Console.ReadKey(true);
             Console.Clear();
+        }
+
+        public static int RoundTransfer()
+        {
+            Random healthRegenRND = new Random();
+            int healthRegen = healthRegenRND.Next(0, 6);
+            Console.WriteLine($"You regained {healthRegen} health!");
+            Console.WriteLine("\nGet ready for the next round...");
+            AnyKeyContinue();
+            return healthRegen;
+
         }
 
 
