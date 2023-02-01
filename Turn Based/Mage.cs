@@ -22,6 +22,7 @@ namespace Turn_Based
             this.itemCount = 2;
             this.itemNames = "Health potion";
             this.specialItemCount = 7;
+            this.specialMove = "Staff Spell";
 
         }
 

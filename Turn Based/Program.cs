@@ -20,7 +20,7 @@ namespace Turn_Based
             string nameText = Console.ReadLine();
             Character playerCharacter = GetCharacter();
             playerCharacter.name = nameText;
-            Console.WriteLine($"\nHealth: {playerCharacter.health}\nDamage: {playerCharacter.damage}\nBlock: {playerCharacter.block}\n\nWeapons:\n{playerCharacter.weapons}\n\nItems: x{playerCharacter.itemCount} {playerCharacter.itemNames}");
+            Console.WriteLine($"\nHealth: {playerCharacter.health}\nDamage: {playerCharacter.damage}\nBlock: {playerCharacter.block}\n\nWeapons:\n{playerCharacter.weapons}\n\nItems: x{playerCharacter.itemCount} {playerCharacter.itemNames}\nSpecial Ability: {playerCharacter.specialMove}");
 
             AnyKeyContinue();
 

@@ -18,6 +18,7 @@ namespace Turn_Based
             this.itemCount = 2;
             this.itemNames = "Health potion";
             this.specialItemCount = 5;
+            this.specialMove = "Double Slash";
         }
 
         public override void AttackOpponent(Enemy opponent)
