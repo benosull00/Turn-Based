@@ -21,7 +21,15 @@ namespace Turn_Based
 
         public override void AttackOpponent(Enemy opponent)
         {
-            opponent.RecieveDamageFromPlayer(this.damage);
+            opponent.RecieveDamageFromPlayer(GetDamage());
+        }
+
+
+        int GetDamage()
+        {
+            Random mageDamageRND_r = new Random();
+            int damage = mageDamageRND_r.Next(65, 90);
+            return damage;
         }
     }
 }

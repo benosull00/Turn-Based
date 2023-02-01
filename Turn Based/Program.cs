@@ -70,10 +70,9 @@ namespace Turn_Based
                         switch (moveChoice)
                         {
                             case 1:
-                                playerCharacter.AttackOpponent(enemyCharacter);
                                 Console.WriteLine("\nAttacking...");
                                 Thread.Sleep(1250);
-                                Console.WriteLine($"\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage!");
+                                playerCharacter.AttackOpponent(enemyCharacter);
                                 break;
 
                             case 2:
@@ -212,11 +211,6 @@ namespace Turn_Based
             return healthRegen;
 
         }
-
-
-
-
-
 
 
 
