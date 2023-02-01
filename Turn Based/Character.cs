@@ -17,6 +17,7 @@ namespace Turn_Based
         public int itemCount;
         public string itemNames;
         public string specialMove;
+        public int specialItemCount;
 
         public void RecieveDamageFromEnemy(int incomingDamage)
         {
@@ -24,6 +25,8 @@ namespace Turn_Based
         }
 
         public abstract void AttackOpponent(Enemy opponent);
+
+        public abstract void DoubleSlashOpponent(Enemy opponent);
 
 
     }

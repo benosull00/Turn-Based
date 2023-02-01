@@ -18,6 +18,7 @@ namespace Turn_Based
         public void RecieveDamageFromPlayer(int incomingDamage)
         {
             this.health -= (incomingDamage / block);
+            Console.WriteLine($"\nYou dealt {incomingDamage / block} damage!");
         }
 
         public abstract void AttackOpponent(Character opponent);

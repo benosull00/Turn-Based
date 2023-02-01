@@ -12,7 +12,7 @@ namespace Turn_Based
             bool gameIsRunning = true;
             
 
-            Console.WriteLine("Welcome\nThis is a turn based combat game\nEvery round you will be presented with a new enemy and can use various abilities to defeat them\nAfter each round you will recover some health and every 5 rounds you will recieve an extra health potion\n\nEvery x rounds there will be a boss (ALSO NOT ADDED YET)\n\ngl&hf");
+            Console.WriteLine("Welcome\nThis is a turn based combat game\nEvery round you will be presented with a new enemy and can use various abilities to defeat them\n\nAfter each round you will recover some health\n\nEvery 5 rounds you will recieve an extra health potion and every 3 rounds you will recieve and extra special ability\n\nEvery x rounds there will be a boss (ALSO NOT ADDED YET)\n\ngl&hf");
             AnyKeyContinue();
 
 
@@ -44,8 +44,20 @@ namespace Turn_Based
 
                     else
                     {
-                        
-                        Console.WriteLine("Round: " + (roundNo) + "\nCurrent health :" + (playerCharacter.health) + "\nCurrent Potions:" + (playerCharacter.itemCount) + "\n\n");
+                        if (playerCharacter.block == 7)
+                        {
+                            Console.WriteLine("Round: " + (roundNo) + "\nCurrent health :" + (playerCharacter.health) + "\nCurrent Potions:" + (playerCharacter.itemCount) + "\nCurrent Shield Bash uses:" + (playerCharacter.specialItemCount) + "\n\n");
+                        }
+
+                        else if (playerCharacter.block == 5)
+                        {
+                            Console.WriteLine("Round: " + (roundNo) + "\nCurrent health :" + (playerCharacter.health) + "\nCurrent Potions:" + (playerCharacter.itemCount) + "\nCurrent Double Slash uses:" + (playerCharacter.specialItemCount) + "\n\n");
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Round: " + (roundNo) + "\nCurrent health :" + (playerCharacter.health) + "\nCurrent Potions:" + (playerCharacter.itemCount) + "\nSpecial Staff uses:" + (playerCharacter.specialItemCount) + "\n\n");
+                        }
 
 
                         Console.WriteLine($"Enemy: {enemyCharacter.name}\nHealth: {enemyCharacter.health:#.##}\nWeapons: {enemyCharacter.weapons}");
@@ -53,27 +65,26 @@ namespace Turn_Based
 
                         if (playerCharacter.block == 7)
                         {
-                            Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Shield Bash\n\n4. Wait\n");
+                            Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Shield Bash\n4. Wait\n");
                         }
 
                         if (playerCharacter.block == 5)
                         {
-                            Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Double Slash\n\n4. Wait\n");
+                            Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Double Slash\n4. Wait\n");
                         }
 
                         if (playerCharacter.block == 4)
                         {
-                            Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Use Staff\n\n4. Wait\n");
+                            Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Use Staff\n4. Wait\n");
                         }
                             int moveChoice = Convert.ToInt32(Console.ReadLine());
 
                         switch (moveChoice)
                         {
                             case 1:
-                                playerCharacter.AttackOpponent(enemyCharacter);
                                 Console.WriteLine("\nAttacking...");
                                 Thread.Sleep(1250);
-                                Console.WriteLine($"\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage!");
+                                playerCharacter.AttackOpponent(enemyCharacter);
                                 break;
 
                             case 2:
@@ -92,29 +103,33 @@ namespace Turn_Based
                                 break;
 
                             case 3:
-                                if (playerCharacter.block == 7)
+                                if (playerCharacter.block == 7 && playerCharacter.specialItemCount > 0)
                                 {
                                     Console.WriteLine("\nAttacking...");
                                     Thread.Sleep(1250);
                                     Console.WriteLine($"You shield bashed {enemyCharacter.name} for 2 damage");
                                     enemyCharacter.health -= 2;
+                                    
                                     break;
                                 }
 
-                                if (playerCharacter.block == 5)
+                                if (playerCharacter.block == 5 && playerCharacter.specialItemCount > 0)
                                 {
-                                    float doubleSlashDmg = 1.4f;
-                                    
-
                                     Console.WriteLine("\nAttacking...");
                                     Thread.Sleep(1250);
-                                    Console.WriteLine($"\nYou double slashed {enemyCharacter.name} for an extra {doubleSlashDmg}x damage");
-                                    enemyCharacter.health -= (playerCharacter.damage / enemyCharacter.block) * doubleSlashDmg;
-                                    Console.WriteLine($"\nYou did {(playerCharacter.damage / enemyCharacter.block) * doubleSlashDmg} damage");
+                                    playerCharacter.DoubleSlashOpponent(enemyCharacter);
+                                    playerCharacter.specialItemCount--;
+                                    break;
                                     
                                 }
+                                if (playerCharacter.specialItemCount == 0)
+                                {
+                                    Console.WriteLine("\nYou are all out of special attacks");
+                                    break;
 
-                                if (playerCharacter.block == 4)
+                                }
+
+                                if (playerCharacter.block == 4 && playerCharacter.specialItemCount > 0)
                                 {
                                     Console.WriteLine("\nWhich staff do you want to use?\n1. Staff of Fire\n2. Staff of Ice");
                                     int staffChoice = Convert.ToInt32(Console.ReadLine());
@@ -125,15 +140,17 @@ namespace Turn_Based
                                         case 1:
                                             Console.WriteLine("\nAttacking...");
                                             Thread.Sleep(1250);
-                                            Console.WriteLine($"\nYou set {enemyCharacter.name} on fire!\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's nice and toasty");
+                                            Console.WriteLine($"\nYou set {enemyCharacter.name} on fire!\nHe's nice and toasty");
                                             playerCharacter.AttackOpponent(enemyCharacter);
+                                            playerCharacter.specialItemCount--;
                                             break;
 
                                         default:
                                             Console.WriteLine("\nAttacking...");
                                             Thread.Sleep(1250);
-                                            Console.WriteLine($"\nYou froze {enemyCharacter.name}\nYou've dealt {playerCharacter.damage / enemyCharacter.block} damage\n\nHe's really cold");
+                                            Console.WriteLine($"\nYou froze {enemyCharacter.name}!\nHe's really cold");
                                             playerCharacter.AttackOpponent(enemyCharacter);
+                                            playerCharacter.specialItemCount--;
                                             break;
                                     }
                                 }
@@ -154,6 +171,11 @@ namespace Turn_Based
                                 playerCharacter.itemCount++;
                                 Console.WriteLine("\nYou recieved an extra health potion!");
                             }
+                            if (roundNo % 3 == 0)
+                            {
+                                playerCharacter.specialItemCount++;
+                                Console.WriteLine("You recieved an extra special ability!");
+                            }
                             AnyKeyContinue();
                             break;
                         }
@@ -163,9 +185,10 @@ namespace Turn_Based
 
                             AnyKeyContinue();
 
-                            if (moveChoice == 3 && playerCharacter.block == 7)
+                            if (moveChoice == 3 && playerCharacter.block == 7 && playerCharacter.specialItemCount > 0)
                             {
                                 Console.WriteLine($"{enemyCharacter.name} is stunned and cannot make a move");
+                                playerCharacter.specialItemCount--;
                             }
 
                             else
@@ -212,11 +235,6 @@ namespace Turn_Based
             return healthRegen;
 
         }
-
-
-
-
-
 
 
 
