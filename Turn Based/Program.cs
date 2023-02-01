@@ -10,8 +10,9 @@ namespace Turn_Based
 
             int roundNo = 1;
             bool gameIsRunning = true;
+            
 
-            Console.WriteLine("Welcome\nThis is a turn based combat game\nEvery round you will be presented with a new enemy and can use various abilities to defeat them\nAfter each round you will recover some health and every x rounds you will recover x items (NOT ADDED YET)\n\nEvery x rounds there will be a boss (ALSO NOT ADDED YET)\n\ngl&hf");
+            Console.WriteLine("Welcome\nThis is a turn based combat game\nEvery round you will be presented with a new enemy and can use various abilities to defeat them\nAfter each round you will recover some health and every 5 rounds you will recieve an extra health potion\n\nEvery x rounds there will be a boss (ALSO NOT ADDED YET)\n\ngl&hf");
             AnyKeyContinue();
 
 
@@ -44,15 +45,27 @@ namespace Turn_Based
                     else
                     {
                         
-                        Console.WriteLine("Round: " + (roundNo) + "\nCurrent health :" + (playerCharacter.health) + "\n\n");
+                        Console.WriteLine("Round: " + (roundNo) + "\nCurrent health :" + (playerCharacter.health) + "\nCurrent Potions:" + (playerCharacter.itemCount) + "\n\n");
 
 
                         Console.WriteLine($"Enemy: {enemyCharacter.name}\nHealth: {enemyCharacter.health:#.##}\nWeapons: {enemyCharacter.weapons}");
 
 
+                        if (playerCharacter.block == 7)
+                        {
+                            Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Shield Bash\n\n4. Wait\n");
+                        }
 
-                        Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Special\n\n4. Wait\n");
-                        int moveChoice = Convert.ToInt32(Console.ReadLine());
+                        if (playerCharacter.block == 5)
+                        {
+                            Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Double Slash\n\n4. Wait\n");
+                        }
+
+                        if (playerCharacter.block == 4)
+                        {
+                            Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Use Staff\n\n4. Wait\n");
+                        }
+                            int moveChoice = Convert.ToInt32(Console.ReadLine());
 
                         switch (moveChoice)
                         {
@@ -136,6 +149,11 @@ namespace Turn_Based
                         {
                             Console.WriteLine($"\nVictory!\nEnemy Defeated");
                             roundNo++;
+                            if (roundNo % 5 == 0)
+                            {
+                                playerCharacter.itemCount++;
+                                Console.WriteLine("\nYou recieved an extra health potion!");
+                            }
                             AnyKeyContinue();
                             break;
                         }
