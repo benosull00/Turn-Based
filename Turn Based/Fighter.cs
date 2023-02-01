@@ -17,6 +17,7 @@ namespace Turn_Based
             this.weapons = "Dual Shortswords";
             this.itemCount = 2;
             this.itemNames = "Health potion";
+            this.specialItemCount = 5;
         }
 
         public override void AttackOpponent(Enemy opponent)
@@ -24,11 +25,15 @@ namespace Turn_Based
             opponent.RecieveDamageFromPlayer(GetDamage());
         }
 
+        public override void DoubleSlashOpponent(Enemy opponent)
+        {
+            opponent.RecieveDamageFromPlayer(GetDamage() * 2);
+        }
 
         int GetDamage()
         {
             Random mageDamageRND_r = new Random();
-            int damage = mageDamageRND_r.Next(65, 90);
+            int damage = mageDamageRND_r.Next(55, 75);
             return damage;
         }
     }

@@ -12,12 +12,13 @@ namespace Turn_Based
         {
             this.name = "";
             this.health = 100;
-            this.damage = 55;
+            this.damage = 65;
             this.block = 7;
             this.weapons = "Longsword\nShield";
             this.itemCount = 2;
             this.itemNames = "Health potion";
             this.specialMove = "Shield Bash";
+            this.specialItemCount = 5;
         }
 
         public override void AttackOpponent(Enemy opponent)
@@ -29,8 +30,10 @@ namespace Turn_Based
         int GetDamage()
         {
             Random mageDamageRND_r = new Random();
-            int damage = mageDamageRND_r.Next(65, 90);
+            int damage = mageDamageRND_r.Next(50, 80);
             return damage;
         }
+        public override void DoubleSlashOpponent(Enemy opponent)
+        { }
     }
 }
