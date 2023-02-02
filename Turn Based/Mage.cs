@@ -16,7 +16,7 @@ namespace Turn_Based
 
             this.name = "";
             this.health = 95;
-            this.damage = 90;
+            this.damage = 110;
             this.block = 4;
             this.weapons = "Staff of Fire\nStaff of Ice";
             this.itemCount = 2;
@@ -46,7 +46,7 @@ namespace Turn_Based
         int GetDamage()
         {
             Random mageDamageRND_r = new Random();
-            int damage = mageDamageRND_r.Next(80, 100);
+            int damage = mageDamageRND_r.Next(100, 115);
             return damage;
         }
 

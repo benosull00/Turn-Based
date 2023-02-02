@@ -12,7 +12,7 @@ namespace Turn_Based
         {
             this.name = "";
             this.health = 115;
-            this.damage = 70;
+            this.damage = 95;
             this.block = 8;
             this.weapons = "Longsword\nShield";
             this.itemCount = 3;
@@ -30,7 +30,7 @@ namespace Turn_Based
         int GetDamage()
         {
             Random mageDamageRND_r = new Random();
-            int damage = mageDamageRND_r.Next(65, 80);
+            int damage = mageDamageRND_r.Next(80, 105);
             return damage;
         }
         public override void DoubleSlashOpponent(Enemy opponent)
