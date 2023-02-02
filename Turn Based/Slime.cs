@@ -21,6 +21,7 @@ namespace Turn_Based
         {
             opponent.RecieveDamageFromEnemy(GetDamage());
         }
+        public override void FlameBreathVSTank(Character opponent) { }
 
         int GetDamage()
         {

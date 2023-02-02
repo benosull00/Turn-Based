@@ -23,6 +23,8 @@ namespace Turn_Based
 
         public abstract void AttackOpponent(Character opponent);
 
+        public abstract void FlameBreathVSTank(Character opponent);
+
     }
 
 }

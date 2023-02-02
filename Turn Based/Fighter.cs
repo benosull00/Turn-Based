@@ -12,7 +12,7 @@ namespace Turn_Based
         {
             this.name = ""; 
             this.health = 105;
-            this.damage = 85;
+            this.damage = 105;
             this.block = 6;
             this.weapons = "Dual Shortswords";
             this.itemCount = 2;
@@ -38,7 +38,7 @@ namespace Turn_Based
         int GetDamage()
         {
             Random mageDamageRND_r = new Random();
-            int damage = mageDamageRND_r.Next(75, 105);
+            int damage = mageDamageRND_r.Next(75, 120);
             return damage;
         }
     }

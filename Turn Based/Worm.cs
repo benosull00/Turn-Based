@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Turn_Based
 {
-    internal class Wolf : Enemy
+    internal class Worm : Enemy
     {
-        public Wolf()
+        public Worm()
         {
-            this.name = "Wolf";
+            this.name = "Worm";
             this.health = GetHealth();
-            this.damage = 90;
-            this.block = 2;
-            this.weapons = "Claws";
+            this.damage = 60;
+            this.block = 3;
+            this.weapons = "Bite";
         }
 
         public override void AttackOpponent(Character opponent)
@@ -27,14 +27,14 @@ namespace Turn_Based
         int GetDamage()
         {
             Random mageDamageRND_r = new Random();
-            int damage = mageDamageRND_r.Next(75, 95);
+            int damage = mageDamageRND_r.Next(45, 80);
             return damage;
         }
 
         int GetHealth()
         {
             Random enemyHealthRND = new Random();
-            int enemyHealth = enemyHealthRND.Next(70, 95);
+            int enemyHealth = enemyHealthRND.Next(35, 60);
             return enemyHealth;
         }
     }
