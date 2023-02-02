@@ -11,9 +11,9 @@ namespace Turn_Based
         public Fighter()
         {
             this.name = ""; 
-            this.health = 100;
-            this.damage = 70;
-            this.block = 5;
+            this.health = 105;
+            this.damage = 85;
+            this.block = 6;
             this.weapons = "Dual Shortswords";
             this.itemCount = 2;
             this.itemNames = "Health potion";
@@ -31,10 +31,14 @@ namespace Turn_Based
             opponent.RecieveDamageFromPlayer(GetDamage() * 2);
         }
 
+        public override void FireAttack(Enemy opponent) { }
+
+        public override void IceAttack(Enemy opponent) { }
+
         int GetDamage()
         {
             Random mageDamageRND_r = new Random();
-            int damage = mageDamageRND_r.Next(55, 75);
+            int damage = mageDamageRND_r.Next(75, 105);
             return damage;
         }
     }

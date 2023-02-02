@@ -15,8 +15,8 @@ namespace Turn_Based
 
 
             this.name = "";
-            this.health = 100;
-            this.damage = 83;
+            this.health = 95;
+            this.damage = 90;
             this.block = 4;
             this.weapons = "Staff of Fire\nStaff of Ice";
             this.itemCount = 2;
@@ -31,10 +31,22 @@ namespace Turn_Based
             opponent.RecieveDamageFromPlayer(GetDamage());   
         }
 
+
+        public override void FireAttack(Enemy opponent)
+        {
+            opponent.RecieveDamageFromPlayer(GetDamage() * 2);
+        }
+
+
+        public override void IceAttack(Enemy opponent)
+        {
+            opponent.RecieveDamageFromPlayer(GetDamage() * 2);
+        }
+
         int GetDamage()
         {
             Random mageDamageRND_r = new Random();
-            int damage = mageDamageRND_r.Next(65, 100);
+            int damage = mageDamageRND_r.Next(80, 100);
             return damage;
         }
 

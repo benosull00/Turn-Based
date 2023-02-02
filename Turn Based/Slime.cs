@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Turn_Based
 {
-    internal class Goblin : Enemy
+    internal class Slime : Enemy
     {
-        public Goblin()
+        public Slime()
         {
-            this.name = "Goblin";
+            this.name = "Slime";
             this.health = GetHealth();
-            this.damage = 60;
-            this.block = 4;
-            this.weapons = "Shortsword";
+            this.damage = 85;
+            this.block = 3;
+            this.weapons = "Toxic Sludge";
         }
 
         public override void AttackOpponent(Character opponent)
@@ -25,13 +25,14 @@ namespace Turn_Based
         int GetDamage()
         {
             Random mageDamageRND_r = new Random();
-            int damage = mageDamageRND_r.Next(50, 75);
+            int damage = mageDamageRND_r.Next(65, 90);
             return damage;
         }
+
         int GetHealth()
         {
             Random enemyHealthRND = new Random();
-            int enemyHealth = enemyHealthRND.Next(65, 70);
+            int enemyHealth = enemyHealthRND.Next(51, 56);
             return enemyHealth;
         }
     }

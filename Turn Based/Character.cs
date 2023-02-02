@@ -22,11 +22,16 @@ namespace Turn_Based
         public void RecieveDamageFromEnemy(int incomingDamage)
         {
             this.health -= (incomingDamage / block);
+            Console.WriteLine($"\nYou take {incomingDamage / block} damage!");
         }
 
         public abstract void AttackOpponent(Enemy opponent);
 
         public abstract void DoubleSlashOpponent(Enemy opponent);
+
+        public abstract void FireAttack(Enemy opponent);
+
+        public abstract void IceAttack(Enemy opponent);
 
 
     }
