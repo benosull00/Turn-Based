@@ -10,9 +10,10 @@ namespace Turn_Based
 
             int roundNo = 1;
             bool gameIsRunning = true;
+           
             
 
-            Console.WriteLine("Welcome\nThis is a turn based combat game\nEvery round you will be presented with a new enemy and can use various abilities to defeat them\n\nAfter each round you will recover some health\n\nEvery 5 rounds you will recieve an extra health potion and every 3 rounds you will recieve and extra special ability\n\nEvery x rounds there will be a boss (ALSO NOT ADDED YET)\n\ngl&hf");
+            Console.WriteLine("This is a turn based combat game\nEvery round you will be presented with a new enemy and can use various abilities to defeat them\n\nAfter each round you will recover some health\n\nEvery 5 rounds you will recieve an extra health potion and every 3 rounds you will recieve and extra special ability\n\nEvery x rounds there will be a boss (ALSO NOT ADDED YET)\n\ngl&hf");
             AnyKeyContinue();
 
 
@@ -27,9 +28,11 @@ namespace Turn_Based
 
             while (gameIsRunning)
             {
-                Enemy enemyCharacter = GetEnemy();
+               
+                    Enemy enemyCharacter = GetEnemy();
+                
 
-                if (playerCharacter.health < 100 && playerCharacter.health > 0)
+                if (playerCharacter.health > 0 && roundNo != 1)
                 {
                     playerCharacter.health += RoundTransfer();
                 }
@@ -44,12 +47,12 @@ namespace Turn_Based
 
                     else
                     {
-                        if (playerCharacter.block == 7)
+                        if (playerCharacter.block == 8)
                         {
                             Console.WriteLine("Round: " + (roundNo) + "\nCurrent health :" + (playerCharacter.health) + "\nCurrent Potions:" + (playerCharacter.itemCount) + "\nCurrent Shield Bash uses:" + (playerCharacter.specialItemCount) + "\n\n");
                         }
 
-                        else if (playerCharacter.block == 5)
+                        else if (playerCharacter.block == 6)
                         {
                             Console.WriteLine("Round: " + (roundNo) + "\nCurrent health :" + (playerCharacter.health) + "\nCurrent Potions:" + (playerCharacter.itemCount) + "\nCurrent Double Slash uses:" + (playerCharacter.specialItemCount) + "\n\n");
                         }
@@ -63,12 +66,12 @@ namespace Turn_Based
                         Console.WriteLine($"Enemy: {enemyCharacter.name}\nHealth: {enemyCharacter.health:#.##}\nWeapons: {enemyCharacter.weapons}");
 
 
-                        if (playerCharacter.block == 7)
+                        if (playerCharacter.block == 8)
                         {
                             Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Shield Bash\n4. Wait\n");
                         }
 
-                        if (playerCharacter.block == 5)
+                        if (playerCharacter.block == 6)
                         {
                             Console.WriteLine("\nWhat would you like to do?\n\n1. Attack\n2. Heal\n3. Double Slash\n4. Wait\n");
                         }
@@ -90,8 +93,8 @@ namespace Turn_Based
                             case 2:
                                 if (playerCharacter.itemCount > 0)
                                 {
-                                    playerCharacter.health += 15;
-                                    Console.WriteLine("\nYou use a health potion\nYou recieved 15 health");
+                                    playerCharacter.health += 35;
+                                    Console.WriteLine("\nYou use a health potion\nYou recieved 35 health");
                                     playerCharacter.itemCount -= 1;
                                     break;
                                 }
@@ -103,17 +106,27 @@ namespace Turn_Based
                                 break;
 
                             case 3:
-                                if (playerCharacter.block == 7 && playerCharacter.specialItemCount > 0)
+                                if (playerCharacter.block == 8 && playerCharacter.specialItemCount > 0)
                                 {
-                                    Console.WriteLine("\nAttacking...");
-                                    Thread.Sleep(1250);
-                                    Console.WriteLine($"You shield bashed {enemyCharacter.name} for 2 damage");
-                                    enemyCharacter.health -= 2;
-                                    
+                                    if (enemyCharacter.name == "Skeleton")
+                                    {
+                                        Console.WriteLine("\nAttacking...");
+                                        Thread.Sleep(1250);
+                                        Console.WriteLine($"You shield bashed {enemyCharacter.name}\nHis bones crumpled to the floor");
+                                        enemyCharacter.health -= 500;
+                                    }
+
+                                    else
+                                    {
+                                        Console.WriteLine("\nAttacking...");
+                                        Thread.Sleep(1250);
+                                        Console.WriteLine($"You shield bashed {enemyCharacter.name} for 2 damage");
+                                        enemyCharacter.health -= 2;
+                                    }
                                     break;
                                 }
 
-                                if (playerCharacter.block == 5 && playerCharacter.specialItemCount > 0)
+                                if (playerCharacter.block == 6 && playerCharacter.specialItemCount > 0)
                                 {
                                     Console.WriteLine("\nAttacking...");
                                     Thread.Sleep(1250);
@@ -138,19 +151,42 @@ namespace Turn_Based
                                     {
 
                                         case 1:
-                                            Console.WriteLine("\nAttacking...");
-                                            Thread.Sleep(1250);
-                                            Console.WriteLine($"\nYou set {enemyCharacter.name} on fire!\nHe's nice and toasty");
-                                            playerCharacter.AttackOpponent(enemyCharacter);
-                                            playerCharacter.specialItemCount--;
+                                            if (enemyCharacter.name == "Wolf")
+                                            {
+                                                Console.WriteLine("\nAttacking...");
+                                                Thread.Sleep(1250);
+                                                Console.WriteLine($"\nYou set {enemyCharacter.name} on fire!\nHe is vulnerable to fire");
+                                                playerCharacter.FireAttack(enemyCharacter);
+                                                playerCharacter.specialItemCount--;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("\nAttacking...");
+                                                Thread.Sleep(1250);
+                                                Console.WriteLine($"\nYou set {enemyCharacter.name} on fire!\nHe quickly put himself out");
+                                                playerCharacter.AttackOpponent(enemyCharacter);
+                                                playerCharacter.specialItemCount--;
+
+                                            }
                                             break;
 
                                         default:
-                                            Console.WriteLine("\nAttacking...");
-                                            Thread.Sleep(1250);
-                                            Console.WriteLine($"\nYou froze {enemyCharacter.name}!\nHe's really cold");
-                                            playerCharacter.AttackOpponent(enemyCharacter);
-                                            playerCharacter.specialItemCount--;
+                                            if (enemyCharacter.name == "Slime")
+                                            {
+                                                Console.WriteLine("\nAttacking...");
+                                                Thread.Sleep(1250);
+                                                Console.WriteLine($"\nYou froze {enemyCharacter.name}!\nHe is vulnerable to ice");
+                                                playerCharacter.IceAttack(enemyCharacter);
+                                                playerCharacter.specialItemCount--;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("\nAttacking...");
+                                                Thread.Sleep(1250);
+                                                Console.WriteLine($"\nYou froze {enemyCharacter.name}!\nIt has no added affect on him");
+                                                playerCharacter.AttackOpponent(enemyCharacter);
+                                                playerCharacter.specialItemCount--;
+                                            }
                                             break;
                                     }
                                 }
@@ -185,7 +221,7 @@ namespace Turn_Based
 
                             AnyKeyContinue();
 
-                            if (moveChoice == 3 && playerCharacter.block == 7 && playerCharacter.specialItemCount > 0)
+                            if (moveChoice == 3 && playerCharacter.block == 8 && playerCharacter.specialItemCount > 0)
                             {
                                 Console.WriteLine($"{enemyCharacter.name} is stunned and cannot make a move");
                                 playerCharacter.specialItemCount--;
@@ -196,10 +232,8 @@ namespace Turn_Based
 
                                 Console.WriteLine($"{enemyCharacter.name}'s Turn\n\n{enemyCharacter.name} is thinking...");
                                 Thread.Sleep(1250);
-
-                                enemyCharacter.AttackOpponent(playerCharacter);
                                 Console.WriteLine($"{enemyCharacter.name} decides to attack");
-                                Console.WriteLine($"\nYou take {enemyCharacter.damage / playerCharacter.block} damage");
+                                enemyCharacter.AttackOpponent(playerCharacter); 
                             }
 
                             
@@ -228,7 +262,7 @@ namespace Turn_Based
         public static int RoundTransfer()
         {
             Random healthRegenRND = new Random();
-            int healthRegen = healthRegenRND.Next(0, 6);
+            int healthRegen = healthRegenRND.Next(1, 10);
             Console.WriteLine($"You regained {healthRegen} health!");
             Console.WriteLine("\nGet ready for the next round...");
             AnyKeyContinue();
@@ -259,24 +293,37 @@ namespace Turn_Based
 
         public static  Enemy GetEnemy()
         {
+            int roundNoEnemy = 1;
+            roundNoEnemy++; 
             Random rndEnemy = new Random();
-            int enemySelect = rndEnemy.Next(1, 10);
+            int enemySelect = rndEnemy.Next(1, 16);
 
-            if (enemySelect >= 1 && enemySelect <= 5)
+            if (enemySelect >= 1 && enemySelect <= 4)
             {
                 return new Goblin();
             }
 
-            else if (enemySelect >= 6 && enemySelect < 9)
+            else if (enemySelect >= 5 && enemySelect <= 8)
             {
-                return new Wolf();            
+                return new Wolf();
+            }
+
+            else if (enemySelect >= 9 && enemySelect <= 12)
+            {
+                return new Skeleton();
             }
 
             else
             {
-                return new BanKiMoon();
+                return new Slime();
             }
         }
+
+        public static Enemy GetDragon()
+        {
+            return new Dragon();
+        }
+
     }
 
 }
