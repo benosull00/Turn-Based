@@ -9,6 +9,7 @@ namespace Turn_Based
         {
 
             int roundNo = 1;
+            int testVar = 0;
             bool gameIsRunning = true;
            
             
