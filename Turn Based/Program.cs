@@ -8,7 +8,7 @@ namespace Turn_Based
         static void Main(string[] args)
         {
 
-            int roundNo = 9;
+            int roundNo = 1;
             bool gameIsRunning = true;
            
             
