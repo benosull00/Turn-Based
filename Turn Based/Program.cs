@@ -13,7 +13,7 @@ namespace Turn_Based
            
             
 
-            Console.WriteLine("This is a turn based combat game\nEvery round you will be presented with a new enemy and can use various abilities to defeat them\n\nAfter each round you will recover some health\n\nEvery 5 rounds you will recieve an extra health potion and every 3 rounds you will recieve and extra special ability\n\nEvery 10 rounds there will be a boss\n\ngl&hf");
+            Console.WriteLine("This is a turn based combat game\nEvery round you will be presented with a new enemy and can use various abilities to defeat them\n\nAfter each round you will recover some health\n\nEvery 5 rounds you will recieve an extra health potion and every 3 rounds you will recieve an extra special ability\n\nEvery 10 rounds there will be a boss\n\ngl&hf");
             AnyKeyContinue();
 
 
